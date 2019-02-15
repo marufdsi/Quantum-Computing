@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{authblk}
@@ -6,7 +6,7 @@
 %\newcommand{\todo}[1]{\color{red}\textbf{\hl{#1}}\color{black}\xspace}
 %\newcommand{\todo}[1]{}
 
-\title{Project Proposal of Quantum Computing}
+\title{Survey: Quantum Computing Algorithms and Programming Model}
 \author[]{Md Maruf Hossain \\ mhossa10@uncc.edu}
 \affil[]{Department of Computer Science, UNC Charlotte}
 \date{}
@@ -14,9 +14,47 @@
 \begin{document}
 \maketitle
 
-In this project I want to present a survey of \textit{Quantum Computing} model for linear algebra. 
+I want to present a survey on \textit{Quantum Computing} algorithm and programming model as a course project.
+I will work on this project by myself, so there is no need of work distribution. In this proposal, 
+I will give you the motivation and goal of the survey. And also the time plan of the project. 
+
 \section{Motivation}
-In this project I am going to make a survey on 
+Quantum computing is now one of the most popular and growing sectors in modern science. The main reason behind this 
+is the performance capability of the quantum computer. For example, Shor's~\cite{shor1994algorithms} algorithm to find 
+the prime factors of integer $N,$ it can give you output in polynomial($log N$) time. This kind of example boosts up the 
+confidence of computing on the quantum computer. But it is not so straight forward like a traditional computer. Different algorithms 
+need different insight to accommodate into the quantum computer. On the other hand, the programming language 
+of quantum computing is not that much matured as traditional language. The main purpose of the survey is to discuss 
+the different quantum algorithms ~\cite{shor1994algorithms}~\cite{simon1997power}~\cite{gall2014improved}
+and their performance against existing traditional algorithms. And also analyze the different quantum programming languages 
+~\cite{knill1996conventions}~\cite{selinger2004towards}~\cite{bettelli2003toward}~\cite{omer1998procedural}~\cite{sanders2000quantum} 
+that one can get a clear concept of quantum algorithm what kind of languages best for them.
+
+\section{Goal}
+\begin{enumerate}
+\item Write a survey on different quantum computing algorithms and compare them with the traditional algorithm.
+\item Discuss different quantum programming languages.
+\item Try to find out a clear concept that what kind of algorithm suitable for quantum computing and what kind 
+of programming language one should choose.
+\item Make a presentation on the survey to present in the class.
+\end{enumerate}
+
+\section{Shcedule of the Project}
+Here is the task and their schedule of the project,
+\begin{table}[htb]
+  \small
+\caption{Time Sheet}
+\label{tab:timesheet}
+\centering
+\begin{tabular}[c]{| l | l | c|}
+\hline
+Date & Task & Overall Percentage \\ \hline
+02/19/2019 & Project Proposal & 10\% \\ \hline
+03/19/2019 & Mid-Term Report & 50\% \\ \hline
+04/16/2019 & Slides of Survey & 90\% \\ \hline
+04/30/2019 & Final Report & 100\% \\ \hline
+\end{tabular}
+\end{table}
 
 \bibliographystyle{unsrt}
 \bibliography{reference}
