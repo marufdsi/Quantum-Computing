@@ -35,46 +35,54 @@ mhossa10@uncc.edu}
 
 \begin{abstract}
  Quantum computing is now one of the most popular and growing sectors in modern science. The main reason behind this 
-is the performance capability of the quantum computer.
+is the performance capability of the quantum computer. But quantum programming is a relatively young subject and it is not 
+so straight forward in comparison to the others. On the other hand, there is no ideal \textit{Quantum Computer} exists so far. So, 
+it is very important to analyze a problem before solving it in the quantum machine. The main purpose of this survey is to discuss 
+the existing \textit{quantum computer} model and its programming language. I am also going to talk about some future challenges of the 
+\textit{quantum programming} language.  
 \end{abstract}
 
-\section{Motivation}
-Quantum computing is now one of the most popular and growing sectors in modern science. The main reason behind this 
-is the performance capability of the quantum computer. For example, Shor's~\cite{shor1994algorithms} algorithm to find 
-the prime factors of integer $N,$ it can give you output in polynomial($log N$) time. This kind of example boosts up the 
-confidence of computing on the quantum computer. But it is not so straight forward like a traditional computer. Different algorithms 
-need different insight to accommodate into the quantum computer. On the other hand, the programming language 
-of quantum computing is not that much matured as traditional language. The main purpose of the survey is to discuss 
-the different quantum algorithms ~\cite{shor1994algorithms}~\cite{simon1997power}~\cite{gall2014improved}
-and their performance against existing traditional algorithms. And also analyze the different quantum programming languages 
-~\cite{knill1996conventions}~\cite{selinger2004towards}~\cite{bettelli2003toward}~\cite{omer1998procedural}~\cite{sanders2000quantum} 
-that one can get a clear concept of quantum algorithm what kind of languages best for them.
+\section{Introduction}
+Sometimes, it is very difficult to solve quantum physics problem in the traditional computer, the main reason is the large size of the problem matrix. 
+That is why scientists made a lot of effort to build up quantum computers that can solve the large problem within the acceptable time complexity.
+Whenever we talk about any computing system, that means it has the ability to solve the problem at a cost of time. And when we talk about 
+\textit{Quantum Computer}, it comes in our mind that it must have the power to solve the classic problem.  So, this is very important 
+for \textit{Quantum Computing} and for some other problems, it can give a superior result that the traditional computer system failed so long.
+One example can be \textit{Shor's}~\cite{shor1994algorithms} algorithm for the prime factorization of an integer. Where traditional computers require 
+$O(2^n)$ time complexity to solve the factorization problem, \textit{Shor's} algorithm can solve it in $O((log\ N)^3)$ time and $O(log\ N)$ space in 
+\textit{Quantum Computer}. Another important algorithm regarding the significant achievement of quantum computers is \textit{Gall's}~\cite{gall2014improved} \textit{Triangle Finding} 
+in an unweighted graph. It can give you a solution in a $O(n^{5/4})$ time where the traditional computers require $O(n^3)$ time. These algorithms are boosted up the 
+significance of the \textit{Quantum Computer}. Now, the challenging part is to implement these algorithms in the  quantum computer. Initially, we mentioned that 
+it is not so straight forward like other programming languages, the main reason for this is the maturity of the language. So, different problems require different 
+insight to implement in the quantum machine. On the other hand, there is no ideal quantum computer exist right now. So, in this survey, I am going to discuss 
+the little bit about the quantum hardware or the simulator and then the programming models that can help us to solve the different problems in the quantum machine. 
+This is a class projects of \textit{Quantum Computing} course and I got most of the information from the course materials, websites and from some research works~\cite{selinger2004brief}.  
+  
+\section{Hardware Model}
+\textit{Quantum Computer} is mainly based on the superposition and entanglement of quantum physics, but it hard to build an ideal quantum computer. But, nowadays IBM, Microsoft, 
+and other companies are trying to construct different types of prototype and virtual machine for quantum computing. Hardware is very important for any kind of languages because 
+based on the hardware you have to design the compiler. In this section, I am going to discuss the different type of virtual hardware model for quantum computing. 
 
-\section{Goal}
-\begin{enumerate}
-\item Write a survey on different quantum computing algorithms and compare them with the traditional algorithm.
-\item Discuss different quantum programming languages.
-\item Try to find out a clear concept that what kind of algorithm suitable for quantum computing and what kind 
-of programming language one should choose.
-\item Make a presentation on the survey to present in the class.
-\end{enumerate}
+\subsection{Virtual Hardware Model}
+Most of the virtual hardware models are almost same, so one can choose any programming model they want.
 
-\section{Shcedule of the Project}
-Here is the task and their schedule of the project,
-\begin{table}[htb]
-  \small
-\caption{Time Sheet}
-\label{tab:timesheet}
-\centering
-\begin{tabular}[c]{| l | l | c|}
-\hline
-Date & Task & Overall Percentage \\ \hline
-02/19/2019 & Project Proposal & 10\% \\ \hline
-03/19/2019 & Mid-Term Report & 50\% \\ \hline
-04/16/2019 & Slides of Survey & 90\% \\ \hline
-04/30/2019 & Final Report & 100\% \\ \hline
-\end{tabular}
-\end{table}
+\subsubsection{Quantum Circuit Model}
+The \textit{Quantum Circuit}~\cite{yao1993quantum} is made using quantum gates like traditional logic gates. The most important facts of \textit{Quantum Circuit} is that the quantum gates 
+are reversible and unitary transformation over a complex vector space. The \textit{measurements} quantum operation is always carried out at the very last step in a computation. 
+\textit{Quantum Circuit} model is one of the most popular virtual hardware models in quantum computing.
+
+\subsubsection{QRAM}
+Another important virtual hardware model called QRAM~\cite{knill1996conventions} and this model will give you the freedom of  \textit{unitary transformation} and \textit{measurements}. 
+In this model, quantum device is controlled by a traditional computer. The quantum device contains a large number of addressable quantum bits but the number is finite. It acts like a 
+RAM chip, that is why it is call QRAM. The traditional controller device send instruction to the quantum device, either the \textit{unitary transformations} or the \textit{measurements}.
+
+\section{Quantum Programming Language}
+
+\subsection{Imperative Quantum Programming Language}
+
+\subsection{Functional Quantum Programming Language}
+
+\section{Conclusion}
 
 \bibliographystyle{unsrt}
 \bibliography{surveyref}
