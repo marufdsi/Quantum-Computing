@@ -2,6 +2,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{authblk}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{url}
 
 %\newcommand{\todo}[1]{\color{red}\textbf{\hl{#1}}\color{black}\xspace}
 %\newcommand{\todo}[1]{}
@@ -14,12 +17,145 @@
 \begin{document}
 \maketitle
 \textit{Fourier Transform} decomposes or analysis a function of time or signal into its constituent frequencies. 
-\textit{Quantum Fourier Transfor}{QFT} is a critical part of \textit{Shor}'s Algorithm and many other algorithms as well.
-The main idea of this report is to explain the \textit{Quantum Fourier Transform}, that can help to understant the QFT.
+\textit{Quantum Fourier Transform}{QFT} is a critical part of \textit{Shor}'s Algorithm and many other algorithms as well.
+The main idea of this report is to explain the \textit{Quantum Fourier Transform}, that can help to understand the QFT. This document is a midterm report of 
+Quantum Computing class, that is why most the information comes from class lecture, documents and from web sites~\cite{quantumbook}.
 
-\section{Quantum Fourier Transform}
- 
+\section{Quantum Fourier Transform(QFT)}
+Fourier analysis is a system or method that can help to describe the internal frequencies of a function. \textit{Quantum Fourier Transform} 
+is a quantum implementation of the discrete Fourier transform. Let say, you have a $n$ qubit state vector $\ket{\alpha}\ =\ \alpha_0\ket{0} + 
+\alpha_1\ket{1} + \cdots +\alpha_n\ket{n}$, now QFT algorithm will transform it into $\ket{\beta}\ =\ \beta_0\ket{0} + \beta_1\ket{1} + \cdots + \beta_n\ket{n}$ 
+that a measurement on $\ket{\beta}$ will only return one of its $n$ components. 
 
+The main difference between \textit{Hadamard} transform and QFT is that it introduces phase, that is called primitive roots of unity $\omega$. It is important to 
+understand the concept of primitive roots of unity $\omega$ before going for the \textit{Quantum Fourier Transform}. We know that $x^n = 1$ has exactly $n$ solutions. 
+Let say $n=2$ then $x$ could be 1 or -1. Now, if $n=4$ then $x$ could be $1,i,-1\ or\ -i$. Here $i$ is a complex number and these are the roots of the equation. 
+The interesting fact is that you can write these roots by the powers of $\omega\ =\ e^{2\pi i/n}$ and $\omega$ is called a primitive $n^{th}$ root of unity. 
+  
+\begin{figure}[htp!]
+  \centering
+  \includegraphics[width=.4\linewidth]{unity_of_roots.png}
+  \caption{The 5 complex $5^{th}$ roots of 1.~\cite{quantumbook}}
+  \label{fig:unity_of_roots}
+\end{figure}
+
+We can explain $\omega$ by the unit circle, figure ~\ref{fig:unity_of_roots} represents the roots of unity for $n=5$. It shows the different phase of $\omega$ along with 
+the other complex roots. We can see $\omega$ lies on the unit circle that means $|\omega|$ represent the absolute value of the radius, $|\omega|\ =\ 1$. On the other hand, 
+the line from the center to the $\omega$ makes an angle with the horizontal original line, $\phi\ =\ 2\pi/M$. Here, M is the M\textit{th} root of unity. Now the relation between 
+$\omega$ and $\phi$ is that if you square the $\omega$ then the angle $\phi$ will be double. In general, if you apply j\textit{th} power on the $\omega$ that means $\omega^{j}$ 
+then the phase angle turn into $\phi\ =\ 2j\pi/M$. We can represent M as $2^m$ then we can get $\phi\ =\ 2j\pi/2^m$.
+
+So far we get some knowledge about the roots of unity and phase angle, now we can move forward towards the \textit{Quantum Fourier Transform}. A matrix is the best way to 
+represent a \textit{Quantum Fourier Transform} system, that is why to represent a $2^m$ dimensional QFT you need $2^m\ \times\ 2^m$ matrix $F_{2^m}$. QFT matrix function 
+can be defined by the 
+\begin{eqnarray*}
+F_{2^m}[i,j]\ =\ \omega^{ij}/\sqrt{2^m}
+\end{eqnarray*}    
+where $\omega\ =\ e^{2\pi i/2^m}$ is the $2^m$-\textit{th} root of unity. So we will get a matrix like,
+\begin{eqnarray*}
+QFT_{2^m}=\frac{1}{\sqrt{2^m}}
+\begin{pmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+1 & \omega & \omega^2 & \cdots & \omega^{2^m-1} \\
+1 & \omega^2 & \omega^4 & \cdots & \omega^{2(2^m-1)} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & \omega^{2^m-1} & \omega^{2(2^m-1)} &\cdots &\omega^{(2^m-1)^2}
+\end{pmatrix}
+\end{eqnarray*}
+
+The main idea of this transformation is to take the vector 
+$\begin{pmatrix}
+  \alpha_0 \\
+  \alpha_1 \\
+  \vdots \\
+  \alpha_{n-1} 
+\end{pmatrix}
+$ and transform them into 
+$\begin{pmatrix}
+  \beta_0 \\
+  \beta_1 \\
+  \vdots \\
+  \beta_{n-1} 
+\end{pmatrix}
+$
+Now, if we choose $M = 2$ that means,  $2^m = 2$, $\omega\ =\ 2^{\pi i}$ and phase angle $\phi\ =\ \pi$. So, from the unity circle $\omega^0\ =\ 1$ and $\omega^1=-1$ 
+because of the angle shift $\pi$.
+\begin{eqnarray*}
+QFT_2\ =\ \frac{1}{\sqrt{2}}
+\begin{pmatrix}
+ 1 & 1 \\
+ 1 & \omega
+\end{pmatrix}
+\ =\ 
+\begin{pmatrix}
+  1 & 1 \\
+  1 & -1
+\end{pmatrix}
+\end{eqnarray*}
+
+Similarly, if we choose $M=4$ that means $2^m=4$ then phase angle will be $\phi\ =\ \pi/2$. So, from the unity of circle we can get 
+$\omega^0=1,\ \omega^1=\omega=i,\ \omega^2=-1,\ \omega^3=-i,\ \omega^4=1,\ \omega^5=i,\ \omega^6=-1,\ \omega^7=-i,\ \omega^8=1,\ \omega^9=i$
+
+\begin{eqnarray*}
+F_4\ =\ _QFT_{2^2}\ =\ QFT_{4}\ =\ \frac{1}{\sqrt{2}}
+\begin{pmatrix}
+ 1 & 1 & 1 & 1 \\
+ 1 & \omega & \omega^2 & \omega^3 \\
+ 1 & \omega^2 & \omega^4 & \omega^6 \\
+ 1 & \omega^3 & \omega^6 & \omega^9
+\end{pmatrix}
+\ =\ 
+\begin{pmatrix}
+  1 & 1 & 1 & 1 \\
+  1 & i & -1 & -i \\
+  1 & -1 & 1 & -1 \\
+  1 & -i & -1 & i 
+\end{pmatrix}
+\end{eqnarray*}
+
+Now, if we move column(0 and 2) to the left then we will get,
+\begin{eqnarray*}
+F'_4\ =\
+\begin{pmatrix}
+  1 & 1 & 1 & 1 \\
+  1 & -1 & i & -i \\
+  1 & 1 & -1 & -1 \\
+  1 & -1 & -i & i 
+\end{pmatrix}
+\ =\ 
+\begin{pmatrix}
+ H & AH \\
+ H & -AH
+\end{pmatrix}
+\end{eqnarray*}
+
+Where $A\ =\ 
+\begin{pmatrix}
+ 1 & 0 \\
+ 0 & i
+\end{pmatrix}
+$ is a phase shift operation. At the beginning of the article, we mentioned that the main difference between QFT and \textit{Hadamard} is the phase. 
+In general, we can write,
+\begin{eqnarray*}
+F_{2^m}\ =\ \frac{1}{\sqrt{2}}
+\begin{pmatrix}
+ F_{2^{m-1}} & AF_{2^{m-1}} \\
+ F_{2^{m-1}} & -AF_{2^{m-1}}
+\end{pmatrix}
+\end{eqnarray*}
+where
+\begin{eqnarray*}
+A\ =\ 
+\begin{pmatrix}
+ 1 & & & \\
+   & \omega & & \\
+   & & \ddots & \\
+   & & & \omega^{2^{m-1}-1}
+\end{pmatrix}
+\end{eqnarray*}
+Now, m qubits require $2^m$ operations to compute $F\ket{\emptyset}$and a \textit{Fast Fourier Transform} can compute $A\ket{X}$ in $O(m2^m)$ steps.
+But, with the \textit{Quantum} circuit speed up, we can implement $F_{2^m}\ket{\emptyset}$ with a \textit{quantum circuit} of $O(m^2)$ gates. As earlier we mentioned, 
+this calculation has a great significance on the \textit{Shor}'s algorithm that is why this enhancement is also important.
 \bibliographystyle{unsrt}
 \bibliography{midref}
 
